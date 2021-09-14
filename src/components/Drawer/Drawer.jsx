@@ -38,13 +38,13 @@ const useStyles = makeStyles((theme) => ({
   },
   marginToolbar: {
     ...theme.mixins.toolbar,
-    marginTop: "2em",
+    marginTop: "2.2em",
 
     [theme.breakpoints.down("md")]: {
       marginTop: "1em",
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "1em",
+      marginTop: "1.15em",
     },
   },
   estimate: {
@@ -114,13 +114,13 @@ const Drawer = ({ open, onOpen, onClose }) => {
         break;
       default:
         break;
-      }
-  }, [activeDrawer])
+    }
+  }, [activeDrawer]);
 
   const handleClick = (i) => {
     onClose();
     setActiveDrawer(i);
-  }
+  };
 
   return (
     <>
@@ -132,8 +132,7 @@ const Drawer = ({ open, onOpen, onClose }) => {
         onClose={onClose}
         classes={{ paper: classes.root }}
       >
-
-    <div className={classes.marginToolbar} />
+        <div className={classes.marginToolbar} />
         <List disablePadding>
           {options.map((option, i) => (
             <ListItem

@@ -45,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     height: "6em",
     cursor: "pointer",
+    top: 0,
+    bottom: 0,
 
     [theme.breakpoints.down("md")]: {
       height: "5em",
@@ -70,7 +72,9 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   appBar: {
-    zIndex: theme.zIndex.modal + 1
+    zIndex: theme.zIndex.modal + 1,
+    width: "100vw",
+    left: 0,
   },
   activeTab: {
     fontFamily: "Raleway",
@@ -106,16 +110,20 @@ const servicesOptions = [
   },
 ];
 
-const Navbar = ({ history }) => {
+const Navbar = ({
+  history,
+  activeTab,
+  setactiveTab,
+  activeService,
+  setActiveService,
+}) => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [activeTab, setactiveTab] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [showServicesMenu, setShowServicesMenu] = useState(false);
-  const [activeService, setActiveService] = useState(undefined);
 
   const openServicesManu = (e) => {
     setAnchorEl(e.currentTarget);
@@ -138,6 +146,7 @@ const Navbar = ({ history }) => {
     setActiveService(index);
   };
 
+  // eslint-disable-next-line
   useEffect(() => {
     const currectPath = window.location.pathname;
     switch (currectPath) {
@@ -177,9 +186,12 @@ const Navbar = ({ history }) => {
       case "/contact":
         if (activeTab !== 4) setactiveTab(4);
         break;
+      case "/estimate":
+        setactiveTab(8);
+        break;
       default:
         break;
-    }
+    } // eslint-disable-next-line
   }, [activeTab, activeService]);
 
   const tabs = (
@@ -224,7 +236,14 @@ const Navbar = ({ history }) => {
           label="Contact Us"
         />
       </Tabs>
-      <Button className={classes.button} variant="contained" color="secondary">
+      <Button
+        component={Link}
+        to="/estimate"
+        onClick={() => setactiveTab(6)}
+        className={classes.button}
+        variant="contained"
+        color="secondary"
+      >
         Free Estimate
       </Button>
       <Menu

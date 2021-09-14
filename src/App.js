@@ -1,16 +1,27 @@
+import React, { useState } from "react";
 import { ThemeProvider } from "@material-ui/styles";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar.component.jsx";
 import theme from "./Theme";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
+  const [activeTab, setactiveTab] = useState(0);
+  const [activeService, setActiveService] = useState(undefined);
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Navbar />
+        <Navbar
+          activeTab={activeTab}
+          setactiveTab={setactiveTab}
+          activeService={activeService}
+          setActiveService={setActiveService}
+        />
         <Switch>
-          <Route exact path="/" component={() => <div>Home</div>} />
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/services" component={() => <div>Services</div>} />
           <Route
             exact
@@ -32,6 +43,12 @@ function App() {
           <Route exact path="/contact" component={() => <div>Contact</div>} />
           <Route exact path="/estimate" component={() => <div>Estimate</div>} />
         </Switch>
+        <Footer
+          activeTab={activeTab}
+          setactiveTab={setactiveTab}
+          activeService={activeService}
+          setActiveService={setActiveService}
+        />
       </BrowserRouter>
     </ThemeProvider>
   );

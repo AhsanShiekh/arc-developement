@@ -1,0 +1,9 @@
+*{
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.App{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
