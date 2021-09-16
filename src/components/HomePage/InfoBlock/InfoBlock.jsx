@@ -1,6 +1,7 @@
 import { Button, Grid, Typography, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import ButtonArrow from "../../../ui/5.1 ButtonArrow";
 import InfoBlockStyles from "./InfoBlock.styles";
@@ -41,7 +42,12 @@ const InfoBlock = () => {
           </Typography>
           <Typography variant="subtitle2">Let's Get Personal.</Typography>
           <Grid item>
-            <Button variant="outlined" className={classes.learnMore}>
+            <Button
+              component={NavLink}
+              to="/about"
+              variant="outlined"
+              className={classes.learnMore}
+            >
               <span style={{ marginRight: 5 }}>Learn More </span>
               <ButtonArrow height={15} width={15} fill="white" />
             </Button>
@@ -61,7 +67,12 @@ const InfoBlock = () => {
           </Typography>
           <Typography variant="subtitle2">Say Hello 🙋</Typography>
           <Grid item>
-            <Button variant="outlined" className={classes.learnMore}>
+            <Button
+              component={NavLink}
+              to="/contact"
+              variant="outlined"
+              className={classes.learnMore}
+            >
               <span style={{ marginRight: 5 }}>Learn More </span>
               <ButtonArrow height={15} width={15} fill="white" />
             </Button>

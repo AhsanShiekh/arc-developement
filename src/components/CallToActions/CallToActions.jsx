@@ -1,6 +1,7 @@
 import { Button, Grid, Typography, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import ButtonArrow from "../../ui/5.1 ButtonArrow";
 import CallToActionStyles from "./CallToActions.styles";
 
@@ -35,8 +36,17 @@ const CallToAction = () => {
           >
             Take advantage of the 21st century.
           </Typography>
-          <Grid item justifyContent={matchesSM ? "center" : undefined}>
-            <Button variant="outlined" className={classes.learnMore}>
+          <Grid
+            item
+            container
+            justifyContent={matchesSM ? "center" : undefined}
+          >
+            <Button
+              component={NavLink}
+              to="/revolution"
+              variant="outlined"
+              className={classes.learnMore}
+            >
               <span style={{ marginRight: 5 }}>Learn More </span>
               <ButtonArrow
                 height={15}
@@ -54,7 +64,12 @@ const CallToAction = () => {
           marginLeft: matchesSM ? 0 : "2em",
         }}
       >
-        <Button className={classes.freeEstimate} variant="contained">
+        <Button
+          component={NavLink}
+          to="/estimate"
+          className={classes.freeEstimate}
+          variant="contained"
+        >
           Free Estimate
         </Button>
       </Grid>

@@ -18,6 +18,7 @@ const CallToActionStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
     height: "60em",
     width: "100%",
     [theme.breakpoints.down("md")]: {

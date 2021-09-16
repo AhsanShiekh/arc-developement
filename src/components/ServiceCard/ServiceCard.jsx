@@ -1,6 +1,7 @@
 import { Button, Grid, Typography, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import ButtonArrow from "../../ui/5.1 ButtonArrow";
 import ServiceCardStyles from "./ServiceCard.styles";
 
@@ -10,7 +11,9 @@ const ServiceCard = ({
   subtitle2,
   imgUrl,
   specialText,
-  html,
+  style,
+  last,
+  to,
   right,
 }) => {
   const theme = useTheme();
@@ -21,7 +24,8 @@ const ServiceCard = ({
     <Grid
       container
       alignItems="center"
-      className={right ? classes.root : null}
+      style={style}
+      className={right ? classes.root : last ? classes.last : null}
       justifyContent={matchesSM ? "center" : right ? "flex-end" : undefined}
     >
       <Grid item className={classes.textContainer}>
@@ -34,7 +38,12 @@ const ServiceCard = ({
             <span className={classes.specialText}>{specialText}</span>
           ) : null}
         </Typography>
-        <Button variant="outlined" className={classes.learnMore}>
+        <Button
+          component={NavLink}
+          to={to}
+          variant="outlined"
+          className={classes.learnMore}
+        >
           <span style={{ marginRight: 5 }}>Learn More </span>
           <ButtonArrow
             height={15}

@@ -3,7 +3,10 @@ import { makeStyles } from "@material-ui/core";
 const ServiceCardStyles = makeStyles((theme) => ({
   root: {
     marginTop: 50,
-    marginBottom: 50,
+    marginBottom: 60,
+  },
+  last: {
+    marginBottom: 60,
   },
   learnMore: {
     ...theme.typography.learnButton,

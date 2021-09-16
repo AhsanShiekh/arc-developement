@@ -7,7 +7,7 @@ import Facebook from "../../assets/facebook.svg";
 import Instagram from "../../assets/instagram.svg";
 import Twitter from "../../assets/twitter.svg";
 
-const Footer = ({ setactiveTab, setActiveService }) => {
+const Footer = () => {
   const classes = FooterStyles();
 
   return (
@@ -21,13 +21,7 @@ const Footer = ({ setactiveTab, setActiveService }) => {
         >
           <Grid item>
             <Grid container className={classes.gridItem}>
-              <Grid
-                onClick={() => setactiveTab(0)}
-                component={Link}
-                to="/"
-                item
-                className={classes.Link}
-              >
+              <Grid component={Link} to="/" item className={classes.Link}>
                 Home
               </Grid>
             </Grid>
@@ -44,10 +38,6 @@ const Footer = ({ setactiveTab, setActiveService }) => {
                 to="/services"
                 item
                 className={classes.Link}
-                onClick={() => {
-                  setactiveTab(1);
-                  setActiveService(0);
-                }}
               >
                 Services
               </Grid>
@@ -56,10 +46,6 @@ const Footer = ({ setactiveTab, setActiveService }) => {
                 to="/customsoftwares"
                 item
                 className={classes.Link}
-                onClick={() => {
-                  setactiveTab(1);
-                  setActiveService(1);
-                }}
               >
                 Custom softwares
               </Grid>
@@ -68,10 +54,6 @@ const Footer = ({ setactiveTab, setActiveService }) => {
                 to="/mobileapps"
                 item
                 className={classes.Link}
-                onClick={() => {
-                  setactiveTab(1);
-                  setActiveService(2);
-                }}
               >
                 Mobile Apps
               </Grid>
@@ -80,10 +62,6 @@ const Footer = ({ setactiveTab, setActiveService }) => {
                 to="/websites"
                 item
                 className={classes.Link}
-                onClick={() => {
-                  setactiveTab(1);
-                  setActiveService(3);
-                }}
               >
                 Websites
               </Grid>
@@ -101,7 +79,6 @@ const Footer = ({ setactiveTab, setActiveService }) => {
                 to="/revolution"
                 item
                 className={classes.Link}
-                onClick={() => setactiveTab(2)}
               >
                 Revolution
               </Grid>
@@ -110,7 +87,6 @@ const Footer = ({ setactiveTab, setActiveService }) => {
                 to="/revolution"
                 item
                 className={classes.Link}
-                onClick={() => setactiveTab(2)}
               >
                 Vision
               </Grid>
@@ -119,7 +95,6 @@ const Footer = ({ setactiveTab, setActiveService }) => {
                 to="/revolution"
                 item
                 className={classes.Link}
-                onClick={() => setactiveTab(2)}
               >
                 Technology
               </Grid>
@@ -128,7 +103,6 @@ const Footer = ({ setactiveTab, setActiveService }) => {
                 to="/revolution"
                 item
                 className={classes.Link}
-                onClick={() => setactiveTab(2)}
               >
                 Process
               </Grid>
@@ -141,31 +115,13 @@ const Footer = ({ setactiveTab, setActiveService }) => {
               spacing={1}
               className={classes.gridItem}
             >
-              <Grid
-                component={Link}
-                to="/about"
-                item
-                className={classes.Link}
-                onClick={() => setactiveTab(3)}
-              >
+              <Grid component={Link} to="/about" item className={classes.Link}>
                 About Us
               </Grid>
-              <Grid
-                component={Link}
-                to="/about"
-                item
-                className={classes.Link}
-                onClick={() => setactiveTab(3)}
-              >
+              <Grid component={Link} to="/about" item className={classes.Link}>
                 History
               </Grid>
-              <Grid
-                component={Link}
-                to="/about"
-                item
-                className={classes.Link}
-                onClick={() => setactiveTab(3)}
-              >
+              <Grid component={Link} to="/about" item className={classes.Link}>
                 Team
               </Grid>
             </Grid>
@@ -182,7 +138,6 @@ const Footer = ({ setactiveTab, setActiveService }) => {
                 to="/contact"
                 item
                 className={classes.Link}
-                onClick={() => setactiveTab(4)}
               >
                 Contact Us
               </Grid>

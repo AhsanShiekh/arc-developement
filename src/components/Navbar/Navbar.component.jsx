@@ -12,7 +12,7 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import { Link, withRouter } from "react-router-dom";
+import { Link, NavLink, withRouter } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import Drawer from "../Drawer/Drawer";
@@ -70,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
     fontSize: "1rem",
     color: "white",
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.light,
+    },
   },
   appBar: {
     zIndex: theme.zIndex.modal + 1,
@@ -77,7 +80,6 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
   },
   activeTab: {
-    fontFamily: "Raleway",
     opacity: 1,
     fontWeight: "bold",
   },
@@ -88,6 +90,18 @@ const useStyles = makeStyles((theme) => ({
   },
   serviceOption: {
     fontFamily: "Raleway",
+
+    "&:hover": {
+      backgroundColor: theme.palette.primary.dark,
+    },
+  },
+  activeService: {
+    fontWeight: "bold",
+    backgroundColor: theme.palette.primary.dark,
+  },
+  activeEstimate: {
+    fontWeight: "bold",
+    backgroundColor: theme.palette.secondary.light,
   },
 }));
 
@@ -110,13 +124,7 @@ const servicesOptions = [
   },
 ];
 
-const Navbar = ({
-  history,
-  activeTab,
-  setactiveTab,
-  activeService,
-  setActiveService,
-}) => {
+const Navbar = ({ history, activeService, setActiveService }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
@@ -135,112 +143,58 @@ const Navbar = ({
     setShowServicesMenu(false);
   };
 
-  const handleChange = (e, value) => {
-    setactiveTab(value);
-  };
-
-  const handleServicesClick = (event, index) => {
-    setAnchorEl(null);
-    setShowServicesMenu(false);
-    setactiveTab(1);
-    setActiveService(index);
-  };
-
-  // eslint-disable-next-line
-  useEffect(() => {
-    const currectPath = window.location.pathname;
-    switch (currectPath) {
-      case "/":
-        if (activeTab !== 0) setactiveTab(0);
-        break;
-      case "/services":
-        if (activeTab !== 1) {
-          setactiveTab(1);
-          setActiveService(0);
-        }
-        break;
-      case "/customsoftwares":
-        if (activeTab !== 1) {
-          setactiveTab(1);
-          setActiveService(1);
-        }
-        break;
-      case "/mobileapps":
-        if (activeTab !== 1) {
-          setactiveTab(1);
-          setActiveService(2);
-        }
-        break;
-      case "/websites":
-        if (activeTab !== 1) {
-          setactiveTab(1);
-          setActiveService(3);
-        }
-        break;
-      case "/revolution":
-        if (activeTab !== 2) setactiveTab(2);
-        break;
-      case "/about":
-        if (activeTab !== 3) setactiveTab(3);
-        break;
-      case "/contact":
-        if (activeTab !== 4) setactiveTab(4);
-        break;
-      case "/estimate":
-        setactiveTab(8);
-        break;
-      default:
-        break;
-    } // eslint-disable-next-line
-  }, [activeTab, activeService]);
-
   const tabs = (
     <React.Fragment>
-      <Tabs
-        value={activeTab}
-        onChange={handleChange}
-        className={classes.tabs}
-        indicatorColor="primary"
-      >
+      <Tabs className={classes.tabs} indicatorColor="primary">
         <Tab
-          component={Link}
+          component={NavLink}
           to="/"
-          className={activeTab === 0 ? classes.activeTab : classes.tab}
+          isActive={(match) => {
+            if (match.url === "/") {
+              return true;
+            }
+          }}
+          activeClassName={classes.activeTab}
+          className={classes.tab}
           label="Home"
         />
         <Tab
           aria-owns={anchorEl ? "services-menu" : undefined}
           aria-haspopup={anchorEl ? true : undefined}
-          component={Link}
+          component={NavLink}
           onMouseOver={openServicesManu}
+          activeClassName={classes.activeTab}
           to="/services"
-          className={activeTab === 1 ? classes.activeTab : classes.tab}
+          className={classes.tab}
           label="Services"
         />
         <Tab
-          component={Link}
+          component={NavLink}
           to="/revolution"
-          className={activeTab === 2 ? classes.activeTab : classes.tab}
+          className={classes.tab}
+          activeClassName={classes.activeTab}
           label="The Revolution"
         />
         <Tab
-          component={Link}
+          component={NavLink}
           to="/about"
-          className={activeTab === 3 ? classes.activeTab : classes.tab}
+          className={classes.tab}
+          activeClassName={classes.activeTab}
           label="About Us"
         />
         <Tab
-          component={Link}
+          component={NavLink}
           to="/contact"
-          className={activeTab === 4 ? classes.activeTab : classes.tab}
+          className={classes.tab}
+          activeClassName={classes.activeTab}
           label="Contact Us"
         />
       </Tabs>
       <Button
-        component={Link}
+        component={NavLink}
         to="/estimate"
-        onClick={() => setactiveTab(6)}
         className={classes.button}
+        activeClassName={classes.activeEstimate}
         variant="contained"
         color="secondary"
       >
@@ -258,12 +212,11 @@ const Navbar = ({
       >
         {servicesOptions.map((service, index) => (
           <MenuItem
-            component={Link}
+            component={NavLink}
             to={service.url}
             key={index}
             classes={{ root: classes.serviceOption }}
-            onClick={(e) => handleServicesClick(e, index)}
-            selected={index === activeService && activeTab === 1}
+            activeClassName={classes.activeService}
           >
             {service.text}
           </MenuItem>
@@ -280,7 +233,6 @@ const Navbar = ({
             <Logo
               onClick={() => {
                 history.push("/");
-                setactiveTab(0);
               }}
               className={classes.logo}
             />

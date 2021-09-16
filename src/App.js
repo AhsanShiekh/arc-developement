@@ -6,6 +6,7 @@ import theme from "./Theme";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./components/HomePage/HomePage";
+import ServicesPage from "./components/ServicesPage/ServicesPage";
 
 function App() {
   const [activeTab, setactiveTab] = useState(0);
@@ -22,7 +23,7 @@ function App() {
         />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/services" component={() => <div>Services</div>} />
+          <Route exact path="/services" component={ServicesPage} />
           <Route
             exact
             path="/customsoftwares"

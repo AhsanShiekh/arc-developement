@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,8 +53,16 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Pacifico",
 
     "&:hover": {
-      backgroundColor: theme.palette.secondary.dark,
+      backgroundColor: theme.palette.secondary.light,
     },
+  },
+  activeTab: {
+    fontWeight: "bold",
+    backgroundColor: theme.palette.primary.dark,
+  },
+  activeEstimate: {
+    fontWeight: "bold",
+    backgroundColor: theme.palette.secondary.light,
   },
 }));
 
@@ -88,38 +96,10 @@ const options = [
 const Drawer = ({ open, onOpen, onClose }) => {
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-  const [activeDrawer, setActiveDrawer] = useState(0);
-
   const classes = useStyles();
-
-  useEffect(() => {
-    const currectPath = window.location.pathname;
-    switch (currectPath) {
-      case "/":
-        if (activeDrawer !== 0) setActiveDrawer(0);
-        break;
-      case "/services":
-        if (activeDrawer !== 1) {
-          setActiveDrawer(1);
-        }
-        break;
-      case "/revolution":
-        if (activeDrawer !== 2) setActiveDrawer(2);
-        break;
-      case "/about":
-        if (activeDrawer !== 3) setActiveDrawer(3);
-        break;
-      case "/contact":
-        if (activeDrawer !== 4) setActiveDrawer(4);
-        break;
-      default:
-        break;
-    }
-  }, [activeDrawer]);
 
   const handleClick = (i) => {
     onClose();
-    setActiveDrawer(i);
   };
 
   return (
@@ -136,12 +116,23 @@ const Drawer = ({ open, onOpen, onClose }) => {
         <List disablePadding>
           {options.map((option, i) => (
             <ListItem
-              component={Link}
+              component={NavLink}
               to={option.url}
+              isActive={
+                i === 0
+                  ? (match) => {
+                      if (match.url === "/") {
+                        return true;
+                      }
+                    }
+                  : undefined
+              }
               key={i}
+              activeClassName={
+                i === 5 ? classes.activeEstimate : classes.activeTab
+              }
               classes={{ root: i === 5 ? classes.estimate : classes.listItem }}
               button
-              selected={i === activeDrawer}
               onClick={() => handleClick(i)}
             >
               <ListItemText disableTypography>{option.text}</ListItemText>

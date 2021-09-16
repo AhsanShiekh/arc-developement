@@ -5,6 +5,7 @@ import animationData from "../../../animations/landinganimation/data";
 import { Button, Grid, Typography } from "@material-ui/core";
 import ButtonArrow from "../../../ui/5.1 ButtonArrow";
 import { useTheme } from "@material-ui/styles";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const classes = HeroSectionStyles();
@@ -37,12 +38,22 @@ const HeroSection = () => {
           className={classes.buttons}
         >
           <Grid item>
-            <Button className={classes.estimateButton} variant="contained">
+            <Button
+              component={Link}
+              to="/estimate"
+              className={classes.estimateButton}
+              variant="contained"
+            >
               Free Estimate
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="outlined" className={classes.learnMore}>
+            <Button
+              component={Link}
+              to="/revolution"
+              variant="outlined"
+              className={classes.learnMore}
+            >
               <span style={{ marginRight: 8 }}>Learn More </span>
               <ButtonArrow
                 height={15}

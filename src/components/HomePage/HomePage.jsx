@@ -10,13 +10,14 @@ import RevolutionBlock from "./RevolutionBlock/RevolutionBlock.jsx";
 import InfoBlock from "./InfoBlock/InfoBlock.jsx";
 import CallToAction from "../CallToActions/CallToActions.jsx";
 
-const services = [
+export const services = [
   {
     title: "Custom Software Developement",
     subtitle1: "Save Energy, Save Time, Save Money",
     subtitle2: "Complete digital solutions, from investigation to",
     specialText: "celebration.",
     imgUrl: CustomSoftwareDevelopementIcon,
+    to: "/customsoftwares",
   },
   {
     title: "iOS/Android App Development",
@@ -27,12 +28,14 @@ const services = [
       "with either mobile platform.",
     ],
     imgUrl: iosAndroidDevelopementIcon,
+    to: "/mobileapps",
   },
   {
     title: "Website Development",
     subtitle1: "Reach More. Discover More. Sell More.",
     subtitle2: "Optimized for Search Engines, built for speed.",
     imgUrl: WebsiteDevelopementIcon,
+    to: "/websites",
   },
 ];
 
@@ -46,12 +49,13 @@ const HomePage = () => {
       </Grid>
       <Grid item className={classes.servicesContainer}>
         {services.map(
-          ({ title, subtitle1, subtitle2, imgUrl, specialText }, i) => (
+          ({ title, subtitle1, subtitle2, imgUrl, specialText, to }, i) => (
             <ServiceCard
               title={title}
               subtitle1={subtitle1}
               subtitle2={subtitle2}
               imgUrl={imgUrl}
+              to={to}
               key={i}
               html={title === "iOS/Android App Development" ? true : false}
               right={title === "iOS/Android App Development" ? true : false}

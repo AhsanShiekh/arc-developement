@@ -1,6 +1,7 @@
 import { Button, Card, CardContent, Grid, Typography } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import ButtonArrow from "../../../ui/5.1 ButtonArrow";
 import RevolutionBlockStyles from "./RevolutionBlock.styles";
 
@@ -29,7 +30,12 @@ const RevolutionBlock = () => {
               Visionary insights coupled with cutting-edge technology is a
               recipe for revolution.
             </Typography>
-            <Button variant="outlined" className={classes.learnMore}>
+            <Button
+              component={NavLink}
+              to="/revolution"
+              variant="outlined"
+              className={classes.learnMore}
+            >
               <span style={{ marginRight: 5 }}>Learn More </span>
               <ButtonArrow
                 height={15}
