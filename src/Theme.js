@@ -19,13 +19,19 @@ export default createTheme({
     },
   },
   typography: {
-    h4: {
-      fontSize: "1.75rem",
-      fontWeight: 700,
-      color: arcBlue,
-      fontFamily: "Raleway",
-    },
     subtitle1: {
+      fontSize: "1.25rem",
+      fontFamily: "Raleway",
+      fontWeight: 300,
+      color: arcGrey,
+    },
+    body1: {
+      fontSize: "1.35rem",
+      fontFamily: "Raleway",
+      fontWeight: 300,
+      color: arcGrey,
+    },
+    body2: {
       fontSize: "1.25rem",
       fontFamily: "Raleway",
       fontWeight: 300,
@@ -42,6 +48,27 @@ export default createTheme({
       fontWeight: 500,
       color: arcBlue,
       fontFamily: "Pacifico",
+    },
+    h4: {
+      fontFamily: "Raleway",
+      fontSize: "2.5rem",
+      fontWeight: 700,
+      color: `${arcBlue}`,
+      lineSpacing: 3,
+    },
+    h5: {
+      fontFamily: "Raleway",
+      fontSize: "2rem",
+      fontWeight: 600,
+      color: `${arcBlue}`,
+      lineSpacing: 3,
+    },
+    h6: {
+      fontFamily: "Raleway",
+      fontSize: "1.5rem",
+      fontWeight: 600,
+      color: `${arcBlue}`,
+      lineSpacing: 3,
     },
     h2: {
       fontFamily: "Raleway",

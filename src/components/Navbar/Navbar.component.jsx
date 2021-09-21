@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import {
   makeStyles,
@@ -12,7 +12,7 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import { Link, NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import Drawer from "../Drawer/Drawer";
@@ -90,6 +90,8 @@ const useStyles = makeStyles((theme) => ({
   },
   serviceOption: {
     fontFamily: "Raleway",
+    color: "white",
+    fontSize: "1.2rem",
 
     "&:hover": {
       backgroundColor: theme.palette.primary.dark,
@@ -145,7 +147,7 @@ const Navbar = ({ history, activeService, setActiveService }) => {
 
   const tabs = (
     <React.Fragment>
-      <Tabs className={classes.tabs} indicatorColor="primary">
+      <Tabs value={0} className={classes.tabs} indicatorColor="primary">
         <Tab
           component={NavLink}
           to="/"

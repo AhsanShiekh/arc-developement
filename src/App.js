@@ -7,6 +7,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./components/HomePage/HomePage";
 import ServicesPage from "./components/ServicesPage/ServicesPage";
+import CustomSoftwaresPage from "./components/CustomSoftwaresPage/CustomSoftwaresPage";
+import WebsitePage from "./components/WebsitePage/WebsitePage";
+import MobileAppsPage from "./components/MobileAppsPage/MobileAppsPage";
 
 function App() {
   const [activeTab, setactiveTab] = useState(0);
@@ -27,14 +30,10 @@ function App() {
           <Route
             exact
             path="/customsoftwares"
-            component={() => <div>Custom Software</div>}
+            component={CustomSoftwaresPage}
           />
-          <Route
-            exact
-            path="/mobileapps"
-            component={() => <div>Mobile Apps</div>}
-          />
-          <Route exact path="/websites" component={() => <div>WebSites</div>} />
+          <Route exact path="/mobileapps" component={MobileAppsPage} />
+          <Route exact path="/websites" component={WebsitePage} />
           <Route
             exact
             path="/revolution"
