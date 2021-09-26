@@ -9,6 +9,7 @@ import swissKnife from "../../assets/swissKnife.svg";
 import extendAccess from "../../assets/extendAccess.svg";
 import increaseEngagement from "../../assets/increaseEngagement.svg";
 import ServiceBadge from "../ServiceBadge/ServiceBadge";
+import CallToAction from "../CallToActions/CallToActions";
 
 const info = {
   title: "iOS/Android App Development",
@@ -60,7 +61,7 @@ const MobileAppsPage = () => {
   const classes = MobileAppsPageStyles();
 
   return (
-    <Grid container>
+    <Grid container direction="column">
       <Grid item>
         <ServiceInfo
           title={info.title}
@@ -113,6 +114,9 @@ const MobileAppsPage = () => {
         {badges.map((badge, i) => (
           <ServiceBadge key={i} large title={badge.title} img={badge.img} />
         ))}
+      </Grid>
+      <Grid item>
+        <CallToAction />
       </Grid>
     </Grid>
   );

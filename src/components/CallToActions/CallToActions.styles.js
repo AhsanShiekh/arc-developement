@@ -19,7 +19,7 @@ const CallToActionStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
-    height: "60em",
+    height: "85vh",
     width: "100%",
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${MobileCTABackground})`,

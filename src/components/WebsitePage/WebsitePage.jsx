@@ -7,6 +7,7 @@ import analytics from "../../assets/analytics.svg";
 import eCommerse from "../../assets/ecommerce.svg";
 import outReach from "../../assets/outreach.svg";
 import seo from "../../assets/seo.svg";
+import CallToAction from "../CallToActions/CallToActions";
 
 const info = {
   title: "Website Development",
@@ -51,7 +52,7 @@ const WebsitePage = () => {
   const classes = WebsitePageStyles();
 
   return (
-    <Grid container className={classes.root}>
+    <Grid container direction="column" className={classes.root}>
       <Grid item>
         <ServiceInfo title={info.title} body1={info.body1} body2={info.body2} />
       </Grid>
@@ -64,6 +65,9 @@ const WebsitePage = () => {
             img={card.img}
           />
         ))}
+      </Grid>
+      <Grid item>
+        <CallToAction />
       </Grid>
     </Grid>
   );

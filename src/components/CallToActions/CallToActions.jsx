@@ -66,11 +66,11 @@ const CallToAction = () => {
       >
         <Button
           component={NavLink}
-          to="/estimate"
+          to="/revolution"
           className={classes.freeEstimate}
           variant="contained"
         >
-          Free Estimate
+          Revolution
         </Button>
       </Grid>
     </Grid>

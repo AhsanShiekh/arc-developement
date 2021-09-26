@@ -10,6 +10,9 @@ import ServicesPage from "./components/ServicesPage/ServicesPage";
 import CustomSoftwaresPage from "./components/CustomSoftwaresPage/CustomSoftwaresPage";
 import WebsitePage from "./components/WebsitePage/WebsitePage";
 import MobileAppsPage from "./components/MobileAppsPage/MobileAppsPage";
+import RevolutionPage from "./components/RevolutionPage/RevolutionPage";
+import AboutPage from "./components/AboutPage/AboutPage";
+import ContactPage from "./components/ContactPage/ContactPage";
 
 function App() {
   const [activeTab, setactiveTab] = useState(0);
@@ -34,14 +37,9 @@ function App() {
           />
           <Route exact path="/mobileapps" component={MobileAppsPage} />
           <Route exact path="/websites" component={WebsitePage} />
-          <Route
-            exact
-            path="/revolution"
-            component={() => <div>Revolution</div>}
-          />
-          <Route exact path="/about" component={() => <div>About</div>} />
-          <Route exact path="/contact" component={() => <div>Contact</div>} />
-          <Route exact path="/estimate" component={() => <div>Estimate</div>} />
+          <Route exact path="/revolution" component={RevolutionPage} />
+          <Route exact path="/about" component={AboutPage} />
+          <Route exact path="/contact" component={ContactPage} />
         </Switch>
         <Footer
           activeTab={activeTab}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IconButton,
   SwipeableDrawer,
@@ -6,14 +6,20 @@ import {
   ListItem,
   Divider,
   ListItemText,
+  Collapse,
 } from "@material-ui/core";
-import { Menu } from "@material-ui/icons";
+import { ExpandLess, ExpandMore, Menu } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
 import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.primary.main,
+    width: "20em",
+
+    [theme.breakpoints.down("sm")]: {
+      width: "50%",
+    },
   },
   icon: {
     height: 50,
@@ -72,10 +78,6 @@ const options = [
     url: "/",
   },
   {
-    text: "Services",
-    url: "/services",
-  },
-  {
     text: "The Revolution",
     url: "/revolution",
   },
@@ -87,14 +89,11 @@ const options = [
     text: "Contact Us",
     url: "/contact",
   },
-  {
-    text: "Free Estimate",
-    url: "/estimate",
-  },
 ];
 
 const Drawer = ({ open, onOpen, onClose }) => {
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const [collapse, setCollapse] = useState(false);
 
   const classes = useStyles();
 
@@ -139,6 +138,51 @@ const Drawer = ({ open, onOpen, onClose }) => {
               <Divider style={{ background: "black" }} variant="middle" />
             </ListItem>
           ))}
+          <ListItem
+            activeClassName={classes.activeTab}
+            component={NavLink}
+            to="/services"
+            classes={{ root: classes.listItem }}
+          >
+            <ListItemText disableTypography>Services</ListItemText>
+            <Divider style={{ background: "black" }} variant="middle" />
+            {collapse ? (
+              <ExpandLess onClick={() => setCollapse(false)} />
+            ) : (
+              <ExpandMore onClick={() => setCollapse(true)} />
+            )}
+          </ListItem>
+          <Collapse in={collapse} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem
+                activeClassName={classes.activeTab}
+                component={NavLink}
+                to="/customsoftwares"
+                classes={{ root: classes.listItem }}
+              >
+                <ListItemText disableTypography>Custom Softwares</ListItemText>
+                <Divider style={{ background: "black" }} variant="middle" />
+              </ListItem>
+              <ListItem
+                activeClassName={classes.activeTab}
+                component={NavLink}
+                to="/mobileapps"
+                classes={{ root: classes.listItem }}
+              >
+                <ListItemText disableTypography>Mobile Apps</ListItemText>
+                <Divider style={{ background: "black" }} variant="middle" />
+              </ListItem>
+              <ListItem
+                activeClassName={classes.activeTab}
+                component={NavLink}
+                to="/websites"
+                classes={{ root: classes.listItem }}
+              >
+                <ListItemText disableTypography>Websites</ListItemText>
+                <Divider style={{ background: "black" }} variant="middle" />
+              </ListItem>
+            </List>
+          </Collapse>
         </List>
       </SwipeableDrawer>
       <IconButton

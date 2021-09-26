@@ -40,11 +40,11 @@ const HeroSection = () => {
           <Grid item>
             <Button
               component={Link}
-              to="/estimate"
+              to="/revolution"
               className={classes.estimateButton}
               variant="contained"
             >
-              Free Estimate
+              Revolution
             </Button>
           </Grid>
           <Grid item>

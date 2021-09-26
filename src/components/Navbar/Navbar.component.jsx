@@ -192,16 +192,6 @@ const Navbar = ({ history, activeService, setActiveService }) => {
           label="Contact Us"
         />
       </Tabs>
-      <Button
-        component={NavLink}
-        to="/estimate"
-        className={classes.button}
-        activeClassName={classes.activeEstimate}
-        variant="contained"
-        color="secondary"
-      >
-        Free Estimate
-      </Button>
       <Menu
         id="services-menu"
         anchorEl={anchorEl}
